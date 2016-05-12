@@ -9,4 +9,5 @@ fn main() {
 #[test]
 fn test_foo() {
     assert!(foo() == 1);
+    assert!(foo() == 1);
 }
