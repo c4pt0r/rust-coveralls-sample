@@ -1,0 +1,31 @@
+sudo: false
+language: rust
+cache:
+  directories:
+  - $HOME/.cache/rocksdb
+
+matrix:
+  include:
+    - os: linux
+      rust: nightly
+      compiler: clang
+      env: COMPILER=clang++-3.6
+      addons:
+         apt:
+            sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-precise-3.6']
+            packages: ['clang-3.6', 'zlib1g-dev', 'libbz2-dev', 'libsnappy-dev', 'libjemalloc-dev', 'curl', 'libcurl4-openssl-dev', 'libelf-dev', 'libdw-dev']
+    - os: osx
+      rust: nightly
+
+before_script:
+  - |
+      pip install 'travis-cargo<0.2' --user &&
+      export PATH=$HOME/.local/bin:$PATH
+
+after_success:
+  - travis-cargo coveralls --no-sudo --verify
+
+env:
+  global:
+    # override the default `--features unstable` used for the nightly branch
+    - TRAVIS_CARGO_NIGHTLY_FEATURE=""
