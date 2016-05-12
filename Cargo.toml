@@ -3,4 +3,17 @@ name = "hello"
 version = "0.1.0"
 authors = ["dongxu <i@huangdx.net>"]
 
+[[bin]]
+name="hello"
+
+[[bin]]
+name="test1"
+path="test1/main.rs"
+
+[[bin]]
+name="test2"
+path="test2/main.rs"
+
+
 [dependencies]
+
