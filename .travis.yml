@@ -4,7 +4,7 @@ rust:
   - beta
   - nightly
 before_script: |
-  PKGNAME="tikv" # must match with cargo.toml
+  PKGNAME="hello" # must match with cargo.toml
   LOCAL="~/.local" # install here to avoid `sudo`
   export PATH=$LOCAL/bin:$PATH
 
